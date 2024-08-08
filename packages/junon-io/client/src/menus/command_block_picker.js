@@ -80,7 +80,7 @@ class CommandBlockPicker extends BaseMenu {
         this.game.displayError("Trigger already added", { warning: true })
         return
       } else {
-        this.game.commandBlockMenu.createTrigger(value)
+        this.game.commandBlockMenu.createTrigger(value, true, false)
       }
     } else if (this.mode === 'actions') {
       if (this.parent) {

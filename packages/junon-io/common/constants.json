@@ -3387,6 +3387,7 @@
       "cost": {
         "gold": 15
       },
+      "isStackable":true,
       "shouldShowUsage": true,
       "isUnbreakable": true,
       "shouldNotRemoveOnBreak": true,

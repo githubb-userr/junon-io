@@ -149,9 +149,12 @@ class CommandBlockMenu extends BaseMenu {
     }
   }
 
-  createTrigger(event) {
-    let trigger = new Trigger(this, { event: event })
-    trigger.submitSave()
+  createTrigger(event, submit=true, render=true) {
+    let trigger = new Trigger(this, { event: event }, render  )
+    if(submit) {
+      trigger.submitSave()
+    }
+    return trigger
   }
 
   appendTriggerChildEl(el) {
@@ -159,6 +162,7 @@ class CommandBlockMenu extends BaseMenu {
   }
 
   update(data) {
+    console.log(data)
     if (data.error) {
       this.game.displayError(data.error, { warning: true })
       return
@@ -178,9 +182,9 @@ class CommandBlockMenu extends BaseMenu {
         node.remove()
       }
     } else if (data.operation === "add") {
-      let node = this.getNode(data.tempId)
-      if (node) {
-        node.finishAdd(data)
+      if(data.parentId === 0 && data.type === "Trigger") {
+        let trigger = this.createTrigger(data.value, false)
+        trigger.finishAdd()
       }
     }
   }

@@ -58,7 +58,9 @@ class CommandBlock {
         id: trigger.id,
         operation: "add",
         value: trigger.event,
-        tempId: data.tempId
+        tempId: data.tempId,
+        parentId: data.parentId,
+        type: data.type
       })
     }
   }
